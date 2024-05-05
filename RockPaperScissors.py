@@ -1,40 +1,61 @@
-#ANOUSHKA SAHA
-#ROCK PAPER SCISSORS
+# ANOUSHKA SAHA
+# ROCK PAPER SCISSORS
 
 import random
 
-user_input = int(input(print("What do you choose? Type 1 for rock, 2 for paper, and 3 for scissors")))
-comp_throw = random.randint(1,3)
+# ASCII art for rock, paper, and scissors
+rock = '''
+    _______
+---'   ____)
+      (_____)
+      (_____)
+      (____)
+---.__(___)
+'''
 
-if user_input == 1:
-    if comp_throw == 1:
-        print("Computer chose rock.")
-        print("It's a tie.")
-    elif comp_throw == 2:
-        print("Computer chose paper.")
-        print("You lose.")
-    else:
-        print("Computer chose scissors.")
+paper = '''
+    _______
+---'   ____)____
+          ______)
+          _______)
+         _______)
+---.__________)
+'''
+
+scissors = '''
+    _______
+---'   ____)____
+          ______)
+       __________)
+      (____)
+---.__(___)
+'''
+
+# List of game images
+game_images = [rock, paper, scissors]
+
+# User choice input
+user_choice = int(input("What do you choose? Type 0 for Rock, 1 for Paper, or 2 for Scissors.\n"))
+
+# Check if user choice is valid
+if user_choice >= 3 or user_choice < 0: 
+    print("You typed an invalid number, you lose!") 
+else:
+    print(game_images[user_choice])
+
+    # Computer randomly chooses
+    computer_choice = random.randint(0, 2)
+    print("Computer chose:")
+    print(game_images[computer_choice])
+
+    # Determine the winner
+    if user_choice == 0 and computer_choice == 2:
         print("You win!")
-
-if user_input == 2:
-    if comp_throw == 1:
-        print("Computer chose rock.")
-        print("You win!")
-    elif comp_throw == 2:
-        print("Computer chose paper.")
-        print("It's a tie.")
-    else:
-        print("Computer chose scissors.")
-        print("You lose.")
-
-if user_input == 3:
-    if comp_throw == 1:
-        print("Computer chose rock.")
+    elif computer_choice == 0 and user_choice == 2:
         print("You lose")
-    elif comp_throw == 2:
-        print("Computer chose paper.")
+    elif computer_choice > user_choice:
+        print("You lose")
+    elif user_choice > computer_choice:
         print("You win!")
-    else:
-        print("Computer chose scissors.")
-        print("It's a tie.")
+    elif computer_choice == user_choice:
+        print("It's a draw")
